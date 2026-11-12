@@ -9,9 +9,8 @@
 // "Please try again." until the correct word is chosen) -> yes/no probe (e = Yes, i = No).
 // Practice probes get feedback; main-phase probes don't.
 //
-// Requires js_includes/Maze.js and css_includes/Maze.css (Boyce, Futrell & Levy 2020;
-// github.com/vboyce/Ibex-with-Maze, BSD licence). Git Sync copies them to the Farm's
-// Modules and Aesthetics folders.
+// Requires js_includes/Maze.js (Boyce, Futrell & Levy 2020; github.com/vboyce/Ibex-with-Maze,
+// BSD licence) in the Farm's Modules. Maze styling is injected below (no Aesthetics file needed).
 
 PennController.ResetPrefix(null);
 DebugOff();   // comment out while piloting to get the PCIbex debugger panel
@@ -50,6 +49,49 @@ const CFG = {
                   "Rest your fingers on <tt>e</tt> and <tt>i</tt>, and click the button when you're ready to begin.",
     completionHtml: "Thank you for your participation! <b>[COMPLETION CODE NOT SET]</b>"
 };
+
+// ---------------------------------------------------------------- Maze styling
+// Injected here rather than relying on css_includes/Maze.css, because the Farm may not load or
+// namespace Aesthetics files the way local Ibex does. Maze.js gives its elements the classes
+// Maze-counter, Maze-words, Maze-lword, Maze-rword, Maze-arrow, Maze-larrow, Maze-rarrow, Maze-error.
+// !important so these win over any Maze.css already sitting in the Farm's Aesthetics.
+const MAZE_CSS = `
+:root { --mz-word: clamp(30px, 3vw, 56px); --mz-top: 38vh; }
+.Maze-counter { display: none !important; }
+/* Rows are pinned to the viewport, so they're centred no matter what container PennController
+   prints the Maze into. */
+.Maze-words, .Maze-arrow, .Maze-error {
+    position: fixed !important; left: 0 !important; width: 100vw !important;
+    margin: 0 !important; padding: 0 !important; float: none !important; transform: none !important;
+    background: transparent !important; text-align: center !important;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif !important;
+}
+.Maze-words, .Maze-arrow { display: flex !important; justify-content: center !important; gap: 10vw !important; }
+.Maze-words { top: var(--mz-top) !important; font-size: var(--mz-word) !important; line-height: 1.2 !important; }
+.Maze-arrow { top: calc(var(--mz-top) + var(--mz-word) * 1.6) !important; }
+.Maze-error {
+    display: block !important;
+    top: calc(var(--mz-top) + var(--mz-word) * 1.6 + 3em) !important;
+    color: #c00 !important; font-size: clamp(20px, 1.8vw, 32px) !important;
+}
+.Maze-lword, .Maze-rword, .Maze-larrow, .Maze-rarrow {
+    width: 26vw !important; margin: 0 !important; padding: 0 !important; border: none !important;
+    display: block !important; text-align: center !important; white-space: nowrap;
+    background: transparent !important; position: static !important;
+}
+.Maze-larrow, .Maze-rarrow { font-size: clamp(16px, 1.3vw, 24px) !important; color: #999 !important; }
+/* PennController centres each trial in a <p> with a CSS transform, and a transformed ancestor
+   re-anchors position:fixed. Switch the transform off while a Maze is on screen (class added by
+   the trial; :has() covers the same case in current browsers). */
+.leveret-mazemode, .PennController-PennController:has(.Maze-words) { transform: none !important; }
+`;
+(function () {
+    if (document.getElementById("leveret-maze-css")) return;
+    const st = document.createElement("style");
+    st.id = "leveret-maze-css";
+    st.textContent = MAZE_CSS;
+    document.head.appendChild(st);
+})();
 
 // ---------------------------------------------------------------- sequence
 // Insert the `sep` trial(s) after every n trials of `main` (not after the last one).
@@ -176,11 +218,13 @@ function mazeTrial(label, row, cols, feedback) {
         newText("ready", CFG.readyMessage).css(TEXT_CSS).print(...CENTER),
         newKey("readyKey", " ").wait(),
         getText("ready").remove(),
+        newFunction("mazeOn", () => $(".PennController-PennController").addClass("leveret-mazemode")).call(),
         newController("maze", "Maze", mazeOptions(row))
             .print()
             .log()
             .wait()
             .remove(),
+        newFunction("mazeOff", () => $(".PennController-PennController").removeClass("leveret-mazemode")).call(),
         newTimer("post", CFG.postSentenceMs).start().wait(),
         ...probe(row, feedback)
     )

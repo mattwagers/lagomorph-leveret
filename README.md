@@ -19,7 +19,7 @@ holds two example fillers. Both use the final column format, so the full 36 + 72
 |---|---|
 | `data_includes/main.js` | The experiment. All settings are in `CFG` at the top. |
 | `js_includes/Maze.js` | Boyce's Maze controller (vboyce/Ibex-with-Maze, BSD licence, see `Maze.LICENSE`). Unchanged. |
-| `css_includes/Maze.css` | Restyled: the two words and their `e`/`i` labels sit symmetrically on any window width, and the "Words so far" counter is hidden. |
+| (styling) | The Maze styling is injected from `main.js` (`MAZE_CSS`), so it doesn't depend on the Farm's Aesthetics folder. Words are large (3vw, 30–56 px) and centered on screen. The `e`/`i` labels sit under each word, and the "Words so far" counter is hidden. |
 | `chunk_includes/instructions{1,2,3}.html` | Task, mistakes and speed, probes and setup. Each page has comprehension checks. |
 | `chunk_includes/practice.csv` | 6 practice sentences with hand-written distractors and probes (3 Yes, 3 No). |
 | `chunk_includes/critical.csv`, `fillers.csv` | Demo rows in the final format. |
@@ -78,9 +78,7 @@ range of correct words at that position gets flagged.
 ## Deploying
 
 Git Sync this repo (`main`) on the Farm, as with `constint-crimp`. After
-syncing, check that `Maze.js` is in **Modules** and `Maze.css` is in **Aesthetics**. If Git Sync
-didn't pick them up, upload them by hand, replacing any `Maze.js`/`Maze.css` already there so the
-restyled CSS is the one used. Before launch, set `completionHtml` in `CFG`.
+syncing, check that `Maze.js` is in **Modules**. A `Maze.css` in Aesthetics is harmless: the injected styles override it. Before launch, set `completionHtml` in `CFG`.
 
 Recruitment: desktop only, physical keyboard (Prolific device filter).
 

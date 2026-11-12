@@ -1,0 +1,50 @@
+<div style="width: 50%; min-width: 34em; margin: 0 auto; font-family: Helvetica Neue, Helvetica, sans-serif; line-height: 1.45em;">
+
+<span style="float:right;background:darkgrey;color:black;padding:0.25em;font-size:1em">Instructions (1/3)</span>
+
+<h1>The word maze</h1>
+
+<p>
+In this experiment you'll read English sentences one word at a time. The catch is that you
+build each sentence yourself: at every step you see <strong>two words</strong>, side by side.
+Only <strong>one</strong> of them continues the sentence as natural English. Your job is to pick it.
+</p>
+
+<p>
+Rest your fingers on the keyboard: left index finger on <big><tt>e</tt></big>, right index finger on <big><tt>i</tt></big>.
+</p>
+<ul>
+  <li>Press <big><tt>e</tt></big> to choose the word on the <strong>left</strong>.</li>
+  <li>Press <big><tt>i</tt></big> to choose the word on the <strong>right</strong>.</li>
+</ul>
+
+<p>Every sentence starts the same way: <em>The</em> on one side and <tt>x-x-x</tt> on the other. Here is what the first two steps of a sentence might look like:</p>
+
+<div style="border:1px solid #bbb; padding: 1em 0; margin: 1em 0; background: #fafafa;">
+  <div style="display:flex; justify-content:center; gap:5em;"><div style="width:7em;text-align:center"><div style="font-size:1.6em">The</div><div style="color:#888;margin-top:0.2em">e</div></div><div style="width:7em;text-align:center"><div style="font-size:1.6em">x-x-x</div><div style="color:#888;margin-top:0.2em">i</div></div></div>
+  <p style="text-align:center; margin:0.8em 0; color:#555;"><em>&rarr; press <tt>e</tt> for "The". Then:</em></p>
+  <div style="display:flex; justify-content:center; gap:5em;"><div style="width:7em;text-align:center"><div style="font-size:1.6em">about</div><div style="color:#888;margin-top:0.2em">e</div></div><div style="width:7em;text-align:center"><div style="font-size:1.6em">baker</div><div style="color:#888;margin-top:0.2em">i</div></div></div>
+  <p style="text-align:center; margin:0.8em 0 0; color:#555;"><em>&rarr; press <tt>i</tt>: "The baker" is English; "The about" is not.</em></p>
+</div>
+
+<p>
+The correct word switches sides at random, so you'll need to read both words each time.
+The wrong word is always a real word, but one that doesn't fit at that point in the sentence.
+</p>
+
+<div style="border:0.5px solid black;padding:0.5em">
+<big>Confirm your understanding</big>
+<dl>
+    <dt><strong>1. Which key chooses the word on the right?</strong></dt>
+        <dd><input name="q1_rightkey" type="radio" value="i" class="obligatory" id="q1i" /> <label for="q1i"><tt>i</tt></label></dd>
+        <dd><input name="q1_rightkey" type="radio" value="e" id="q1e" /> <label for="q1e"><tt>e</tt></label></dd>
+        <dd><input name="q1_rightkey" type="radio" value="space" id="q1s" /> <label for="q1s">The space bar</label></dd>
+
+    <dt><strong>2. Which word should you choose?</strong></dt>
+        <dd><input name="q2_choose" type="radio" value="continues" class="obligatory" id="q2c" /> <label for="q2c">The word that continues the sentence as natural English</label></dd>
+        <dd><input name="q2_choose" type="radio" value="longer" id="q2l" /> <label for="q2l">The longer word</label></dd>
+        <dd><input name="q2_choose" type="radio" value="left" id="q2left" /> <label for="q2left">Always the word on the left</label></dd>
+</dl>
+</div>
+
+</div>

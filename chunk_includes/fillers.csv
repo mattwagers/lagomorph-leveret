@@ -1,0 +1,3 @@
+label,filler,type,sentence,distractor,question,answer
+exp-fill-F1_where_nogap,F1-01,F1 where/when no-gap,The guide pointed to the ridge where the hikers had camped during the storm.,x-x-x ought anymore of was among their him seldom its belong yellow why ensure.,Did the hikers camp during the storm?,Yes
+exp-fill-F2_orc_early,F2-01,F2 object RC early gap,The editor praised the article that the intern wrote over the weekend.,x-x-x across anybody sit because lots nor listen their than ask anybody.,Did the editor criticize the article?,No

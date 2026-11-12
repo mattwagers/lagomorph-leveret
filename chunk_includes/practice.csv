@@ -1,0 +1,7 @@
+practice_id,before,sentence,distractor,question,answer
+P1,"Let's start practising. Remember: <tt>e</tt> picks the word on the left, <tt>i</tt> the word on the right.",The baker sold fresh bread at the market on Sunday.,x-x-x about wide began those is was during me thinks.,Did the baker sell bread?,Yes
+P2,,The children who were playing outside got very muddy.,x-x-x although nor some therapy explain ago than spoke.,Were the children playing indoors?,No
+P3,Good. Most sentences in the experiment are longer than these. Here are some longer ones.,The tourists photographed the bridge where the couple was standing before sunset.,x-x-x whenever unemployment ago unless their him seldom its doctrine orange become.,Was the couple standing on the bridge?,Yes
+P4,,The coach repaired the bench that the players were sitting on during the game.,x-x-x thank anywhere own quite else nor perhaps into suggest am unless sat knew.,Did the coach break the bench?,No
+P5,,The reporter described the balcony that the mayor was waving from during the parade.,x-x-x everyone ourselves nor because lots nor whose its decide goes unless sit indeed.,Was the mayor waving from the balcony?,Yes
+P6,,The nurse quickly answered the phone while the doctor was reading quietly in the office.,x-x-x since because probably sad enjoy ought him sorely any costume suppose me ran almost.,Did the doctor answer the phone?,No
